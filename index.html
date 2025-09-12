@@ -111,9 +111,12 @@
             const gallery = document.getElementById('gallery');
 
             // Load images from localStorage
-            const savedImages = JSON.parse(localStorage.getItem('ngoGalleryImages')) || [];
-            savedImages.forEach(url => addImageToGallery(url));
+            const savedImages = [
+        'https://raw.githubusercontent.com/hidc0925-afk/hidc-website/main/my-image1.jpg',
+        'https://raw.githubusercontent.com/hidc0925-afk/hidc-website/main/my-image2.jpg'
+    ];
 
+    savedImages.forEach(url => addImageToGallery(url));
             function addImageToGallery(url) {
                 const img = document.createElement('img');
                 img.src = url;
