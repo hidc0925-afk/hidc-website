@@ -37,45 +37,19 @@
             padding: 0 20px;
         }
 
-        .add-image-form {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .add-image-form input[type="text"] {
-            flex: 1;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 1rem;
-        }
-
-        .add-image-form button {
-            background-color: #00796b;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-
-        .add-image-form button:hover {
-            background-color: #004d40;
-        }
-
         .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 0;
         }
 
         .gallery img {
-            width: 100%;
+            max-height: 200px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
 
         .gallery img:hover {
@@ -97,6 +71,16 @@
             padding: 20px;
             margin-top: 60px;
         }
+
+        /* Hide scrollbar for cleaner look */
+        .gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
     </style>
 </head>
 
@@ -108,11 +92,6 @@
     </header>
 
     <div class="container">
-
-        <form class="add-image-form" id="imageForm">
-            <input type="text" id="imageURL" placeholder="Paste image URL here" required />
-            <button type="submit">Add Image</button>
-        </form>
 
         <div class="gallery" id="gallery">
             <!-- Images will appear here -->
@@ -129,34 +108,17 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('imageForm');
             const gallery = document.getElementById('gallery');
 
             // Load images from localStorage
             const savedImages = JSON.parse(localStorage.getItem('ngoGalleryImages')) || [];
             savedImages.forEach(url => addImageToGallery(url));
 
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                const imageUrl = document.getElementById('imageURL').value.trim();
-                if (imageUrl) {
-                    addImageToGallery(imageUrl);
-                    saveImageToLocalStorage(imageUrl);
-                    form.reset();
-                }
-            });
-
             function addImageToGallery(url) {
                 const img = document.createElement('img');
                 img.src = url;
                 img.alt = 'NGO Gallery Image';
                 gallery.appendChild(img);
-            }
-
-            function saveImageToLocalStorage(url) {
-                const savedImages = JSON.parse(localStorage.getItem('ngoGalleryImages')) || [];
-                savedImages.push(url);
-                localStorage.setItem('ngoGalleryImages', JSON.stringify(savedImages));
             }
         });
     </script>
