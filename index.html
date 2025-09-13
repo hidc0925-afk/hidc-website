@@ -45,18 +45,21 @@
         }
 
         .gallery {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 20px 0;
-        }
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    animation: scroll-left 20s linear infinite;
+}
 
-        .gallery img {
-            max-height: 200px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-            flex-shrink: 0;
-            cursor: pointer;
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
         }
 
         .gallery::-webkit-scrollbar {
@@ -141,6 +144,7 @@
 </body>
 
 </html>
+
 
 
 
