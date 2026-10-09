@@ -303,6 +303,52 @@
         padding: 20px;
     }
 }
+
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 850px;
+    margin: 25px auto 0;
+}
+
+.contact-item {
+    padding: 20px;
+    background: #f5f9f7;
+    border: 1px solid #e0ebe5;
+    border-radius: 12px;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.contact-item h3 {
+    color: #00695c;
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+}
+
+.contact-item p {
+    margin: 0;
+    color: #52645b;
+}
+
+.contact-item a {
+    color: #00796b;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
         
     </style>
 </head>
@@ -319,6 +365,7 @@
                 <a href="#about">About Us</a>
                 <a href="#our-work">Our Work</a>
                 <a href="#gallery">Our Gallery</a>
+                <a href="#contact">Contact Us</a>
             </nav>
         </div>
     </header>
@@ -405,6 +452,43 @@
             <div class="gallery-grid" id="gallery-grid">
                 <!-- Gallery images are added by JavaScript. -->
             </div>
+
+            
+<section class="section" id="contact">
+    <h2 class="section-heading">Contact Us</h2>
+
+    <p class="section-intro">
+        Have a question or want to connect with HIDC?
+        We would be happy to hear from you.
+    </p>
+
+    <div class="contact-grid">
+
+        <div class="contact-item">
+            <h3>Call Us</h3>
+            <p>
+                <a href="tel:+919160081016">91600 81016</a><br>
+                <a href="tel:+918341409993">83414 09993</a><br>
+                <a href="tel:+919963320820">99633 20820</a>
+            </p>
+        </div>
+
+        <div class="contact-item">
+            <h3>Email Us</h3>
+            <p>
+                <a href="mailto:hidc0925@gmail.com">
+                    hidc0925@gmail.com
+                </a>
+            </p>
+        </div>
+
+        <div class="contact-item">
+            <h3>Our Address</h3>
+            <p>Main Bazar</p>
+        </div>
+
+    </div>
+</section>        
         </section>
 
     </main>
